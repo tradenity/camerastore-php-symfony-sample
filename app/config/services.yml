@@ -1,0 +1,24 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/book/service_container.html
+parameters:
+#    parameter_name: value
+
+services:
+#    service_name:
+#        class: AppBundle\Directory\ClassName
+#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    tradenity.session.service:
+        class: Tradenity\SDK\Ext\Symfony\Services\SessionService
+        arguments: ['@request_stack']
+
+    app.tradenity_customer_user_provider:
+        class: Tradenity\SDK\Ext\Symfony\Auth\CustomerUserProvider
+
+    app.exception_listener:
+        class: AppBundle\EventListener\ExceptionListener
+        calls:
+            - [ setContainer,["@service_container"] ]
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception }
+
+
