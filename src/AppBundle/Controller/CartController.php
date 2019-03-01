@@ -6,8 +6,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Tradenity\SDK\Entities\Category;
-use Tradenity\SDK\Entities\ShoppingCart;
+use Tradenity\SDK\Resources\Category;
+use Tradenity\SDK\Resources\ShoppingCart;
+use Tradenity\SDK\Resources\LineItem;
+use Tradenity\SDK\Resources\Product;
 
 class CartController extends Controller
 {
@@ -28,8 +30,10 @@ class CartController extends Controller
      */
     public function addAction(Request $request)
     {
-        $cart = ShoppingCart::add($request->request->get('product'), (int)$request->request->get('quantity'));
-        return new JsonResponse(array('total' => $cart->total, 'count' => $cart->count));
+        $productId = $request->request->get('product');
+        $quantity = (int)$request->request->get('quantity');
+        $cart = ShoppingCart::addItem(new LineItem(['product' => new Product(['id' => $productId]), 'quantity' => $quantity]));
+        return new JsonResponse(array('total' => $cart->getTotal(), 'count' => count($cart->getItems())));
     }
 
     /**
@@ -37,7 +41,7 @@ class CartController extends Controller
      */
     public function removeAction(Request $request, $id)
     {
-        $cart = ShoppingCart::removeItem($id);
-        return new JsonResponse(array('total' => $cart->total, 'count' => $cart->count));
+        $cart = ShoppingCart::deleteItem($id);
+        return new JsonResponse(array('total' => $cart->getTotal(), 'count' => count($cart->getItems())));
     }
 }

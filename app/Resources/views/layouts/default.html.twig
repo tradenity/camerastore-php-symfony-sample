@@ -85,7 +85,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="header-right">
 				<div class="cart box_1">
 
-						<h3> $<span id="cart_total" class="simpleCart_total" > {{ cart.total}} </span> (<span id="cart_items_count" class="simpleCart_quantity"> {{ cart.count }}  </span><span>Items</span>)<img src="/images/bag.png" alt="" /></h3>
+						<h3> $<span id="cart_total" class="simpleCart_total" > {{ cart.total / 100.0 }} </span> (<span id="cart_items_count" class="simpleCart_quantity"> {{ cart.items | length }}  </span><span>Items</span>)<img src="/images/bag.png" alt="" /></h3>
 
 					<p><a href="/cart" class="simpleCart_empty">Your cart</a></p>
 					<div class="clearfix"> </div>
@@ -117,7 +117,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<li><a href="/products" >All</a></li>
                     {% for cat in categories %}
 					{% if cat.name != 'Uncategorized' %}
-					<li><a href="/categories/{{ cat.id }}" >{{ cat.title }}</a></li>
+					<li><a href="/categories/{{ cat.id }}" >{{ cat.name }}</a></li>
                     {% endif %}
                     {% endfor %}
 					<li><a href="#" id="show_search_box"><span class="glyphicon glyphicon-search"></span></a></li>

@@ -5,12 +5,11 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Tradenity\SDK\Entities\ShoppingCart;
-use Tradenity\SDK\HttpClient as HttpClient;
-use Tradenity\SDK\Entities\Brand as Brand;
-use Tradenity\SDK\Entities\Category as Category;
-use Tradenity\SDK\Entities\Product as Product;
-use Tradenity\SDK\Entities\Collection as Collection;
+use Tradenity\SDK\Resources\ShoppingCart;
+use Tradenity\SDK\Resources\Brand;
+use Tradenity\SDK\Resources\Category;
+use Tradenity\SDK\Resources\Product;
+use Tradenity\SDK\Resources\Collection;
 
 class StoreController extends Controller
 {
@@ -39,7 +38,7 @@ class StoreController extends Controller
         }
         $brands = Brand::findAll();
         $categories = Category::findAll();
-        $featured = Collection::findOne(['name' => 'featured']);
+        $featured = Collection::findOneBy(['name' => 'featured']);
         $cart = ShoppingCart::get();
         return $this->render('store/products.html.twig', [
             'cart' => $cart, "categories" => $categories, 'brands' => $brands, 'featured' => $featured, 'products' => $products
@@ -53,8 +52,8 @@ class StoreController extends Controller
     {
         $brands = Brand::findAll();
         $categories = Category::findAll();
-        $products = Product::findAll(['category' => $id]);
-        $featured = Collection::findOne(['name' => 'featured']);
+        $products = Product::findAllBy(['categories__contains' => $id]);
+        $featured = Collection::findOneBy(['name' => 'featured']);
         $cart = ShoppingCart::get();
         return $this->render('store/products.html.twig', [
             'cart' => $cart, "categories" => $categories, 'brands' => $brands, 'featured' => $featured, 'products' => $products
@@ -68,8 +67,8 @@ class StoreController extends Controller
     {
         $brands = Brand::findAll();
         $categories = Category::findAll();
-        $products = Product::findAll(["brand" => $id]);
-        $featured = Collection::findOne(['name' => 'featured']);
+        $products = Product::findAllBy(["brand" => $id]);
+        $featured = Collection::findOneBy(['name' => 'featured']);
         $cart = ShoppingCart::get();
         return $this->render('store/products.html.twig', [
             'cart' => $cart, "categories" => $categories, 'brands' => $brands, 'featured' => $featured, 'products' => $products
@@ -88,7 +87,7 @@ class StoreController extends Controller
         else {
             $brands = Brand::findAll();
             $categories = Category::findAll();
-            $featured = Collection::findOne(['name' => 'featured']);
+            $featured = Collection::findOneBy(['name' => 'deals']);
             $cart = ShoppingCart::get();
             // replace this example code with whatever you need
             return $this->render('store/single.html.twig', [

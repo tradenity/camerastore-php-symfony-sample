@@ -32,11 +32,11 @@
                 </tr>
                 <tr>
                     <th>Creation Date</th>
-                    <td>{{ order.createdAt }}</td>
+                    <td>{{ order.createdAt.format('Y-m-d') }}</td>
                 </tr>
                 <tr>
                     <th>Total price</th>
-                    <td>{{ order.total }}</td>
+                    <td>{{ order.total / 100.0 }}</td>
                 </tr>
                 <tr>
                     <th>Status</th>
@@ -61,10 +61,10 @@
                             <tbody>
                             {% for i in order.items %}
                             <tr>
-                                <td>{{ i.product.title }}</td>
+                                <td>{{ i.product.name }}</td>
                                 <td>{{ i.quantity }}</td>
-                                <td>{{ i.unitPrice }}</td>
-                                <td>{{ i.total }}</td>
+                                <td>{{ i.unitPrice / 100.0 }}</td>
+                                <td>{{ i.total / 100.0 }}</td>
                             </tr>
                             {% endfor %}
                             </tbody>

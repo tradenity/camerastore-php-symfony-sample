@@ -7,8 +7,9 @@ imports:
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
-    tradenity_key: sk_xxxxxxxxxxxxxxxxxxxxxx
-    stripe_public_key: pk_xxxxxxxxxxxxxxxx
+    tradenity_key: sk_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    tradenity_endpoint: https://api.tradenity.com/v1
+    stripe_public_key: pk_xxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 framework:
     #esi:             ~

@@ -15,7 +15,7 @@ $(function(){
             data: {product: product_id, quantity: 1},
             success: function(result){
                 console.log(result);
-                cart_total.text(result.total);
+                cart_total.text(result.total / 100.0 );
                 cart_items_count.text(result.count);
             }
         });

@@ -15,10 +15,10 @@
 			</div>
 			<div class="col-md-7 dress-info">
 				<div class="dress-name">
-					<h3>{{ product.title }}</h3>
-					<span>$ {{ product.price }}</span>
+					<h3>{{ product.name }}</h3>
+					<span>$ {{ product.price / 100.0 }}</span>
 					<div class="clearfix"></div>
-					<p>{{ product.description }}</p>
+					<p>{{ product.fullDescription }}</p>
 				</div>
 
 				<div class="purchase">

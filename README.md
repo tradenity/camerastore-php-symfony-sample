@@ -1,6 +1,11 @@
 
-Welcome to the Symfony CameraStore sample application for Tradenity PHP SDK
+Welcome to the Symfony CameraStore sample application for Tradenity ecommerce API PHP SDK
 ===========================================================================
+
+
+This is sample application for [Tradenity](https://www.tradenity.com) ecommerce API using the [PHP SDK](https://github.com/tradenity/php-sdk) using the Symphony framework.
+
+This sample application is free and opensource, we encourage you to fork it and use it as a base for your future applications.
 
 
 ## Live demo
@@ -15,7 +20,14 @@ This is the application we are going to build here.
 
 -  Symfony framework > version 3 (other versions may work but not tested)
 -  [Tradenity PHP SDK](https://github.com/tradenity/php-sdk)
--  [Symfony extensions for the Java SDK](https://github.com/tradenity/php-sdk-symfony-ext)
+-  [Symfony extensions for the PHP SDK](https://github.com/tradenity/php-sdk-symfony-ext)
+
+
+## Create store and load sample data
+
+- If you are not yet registered, create a new [Tradenity account](https://www.tradenity.com).
+- After you login to your account, go to [Getting started](https://admin.tradenity.com/admin/getting_started) page, click "Create sample store", this will create a new store and populate it with sample data
+- From the administration side menu, choose "Developers" > "API Keys", you can use the default key or generate a new one.
 
 
 
@@ -47,7 +59,7 @@ parameters:
 
 We also provide a detailed explanation of the code of this sample applications in the form of a step by step tutorials:
 
-[Camera store for spring mvc tutorial](http://docs.tradenity.com/kb/tutorials/php/symfony).
+[Camera store for Symphony PHP framework tutorial](http://docs.tradenity.com/kb/tutorials/php/symfony).
 
 
 

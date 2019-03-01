@@ -59,15 +59,15 @@
 								<div class="view view-first">
 									<div class="inner_content clearfix">
 										<div class="product_image">
-											<img src="{{p.mainPhoto.url}}" class="img-responsive" alt=""/>
+											<img src="{{ p.mainPhoto.url}}" class="img-responsive" alt=""/>
 											<div class="mask">
 												<div class="info">Quick View</div>
 											</div>
 											<div class="product_container">
 												<div class="cart-left">
-													<p class="title">{{ p.title }}</p>
+													<p class="title">{{ p.name }}</p>
 												</div>
-												<div class="pricey"><span class="item_price" >$ {{ p.price }}</span></div>
+												<div class="pricey"><span class="item_price" >$ {{ p.price / 100.0 }}</span></div>
 												<div class="clearfix"></div>
 											</div>
 										</div>
